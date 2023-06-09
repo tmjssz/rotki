@@ -58,9 +58,9 @@ class GnosisInquirer(EvmNodeInquirerWithDSProxy):
             etherscan_node_name=GNOSIS_ETHERSCAN_NODE_NAME,
             contracts=contracts,
             rpc_timeout=rpc_timeout,
-            contract_multicall=contracts.contract(string_to_evm_address('0x2DC0E2aa608532Da689e89e237dF582B783E552C')),  # noqa: E501
-            contract_scan=contracts.contract(string_to_evm_address('0x1e21bc42FaF802A0F115dC998e2F0d522aDb1F68')),  # noqa: E501
-            dsproxy_registry=contracts.contract(string_to_evm_address('0x283Cc5C26e53D66ed2Ea252D986F094B37E6e895')),  # noqa: E501
+            contract_multicall=contracts.contract(string_to_evm_address('0xcA11bde05977b3631167028862bE2a173976CA11')),  # noqa: E501
+            contract_scan=contracts.contract(string_to_evm_address('0x571C62a1c863aEAD01c1d34D8cB3Ee2c6f938800')),  # noqa: E501
+            dsproxy_registry=contracts.contract(string_to_evm_address('0x46AD1cB076f43126B9a89FdC06f3C8FdF3EEe6e5')),  # noqa: E501
             native_token=A_ETH.resolve_to_crypto_asset(),
         )
         self.etherscan = cast(GnosisEtherscan, self.etherscan)
