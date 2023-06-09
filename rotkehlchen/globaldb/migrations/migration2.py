@@ -4,9 +4,8 @@ if TYPE_CHECKING:
     from rotkehlchen.db.drivers.gevent import DBConnection
 
 def globaldb_data_migration_2(conn: 'DBConnection') -> None:
-    """Introduced at 1.27.1
-    - Removes old setting last_assets_json_version (if existing)
-    - Adds a makerdao vault types cache
+    """Introduced at 1.xx.x
+    - Add contract data for gnosis
     """
     with conn.write_ctx() as cursor:
         # Fetch abi ids from the entries for optimism
