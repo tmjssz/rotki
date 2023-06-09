@@ -926,6 +926,19 @@ class ChainsAggregator(CacheableMixIn, LockableQueryMixIn):
 
     @protect_with_lock()
     @cache_response_timewise()
+    def query_gno_balances(
+            self,  # pylint: disable=unused-argument
+            # Kwargs here is so linters don't complain when the "magic" ignore_cache kwarg is given
+            **kwargs: Any,
+    ) -> None:
+        """
+        Queries all the Gnosis balances and populates the state.
+        Same potential exceptions as ethereum
+        """
+        self.query_evm_chain_balances(chain=SupportedBlockchain.GNOSIS)
+
+    @protect_with_lock()
+    @cache_response_timewise()
     def query_eth_balances(
             self,  # pylint: disable=unused-argument
             # Kwargs here is so linters don't complain when the "magic" ignore_cache kwarg is given
