@@ -66,5 +66,10 @@ export const explorerUrls: AssetExplorerUrls = {
     address: 'https://polygonscan.com/address/',
     transaction: 'https://polygonscan.com/tx/',
     block: 'https://polygonscan.com/block/'
+  },
+  [Blockchain.GNO]: {
+    address: 'https://gnosisscan.io/address/',
+    transaction: 'https://gnosisscan.io/tx/',
+    block: 'https://gnosisscan.io/block/'
   }
 };

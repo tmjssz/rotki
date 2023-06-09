@@ -8,7 +8,7 @@ import {
 } from '@/types/blockchain/accounts';
 
 export const useChainAccountBalances = () => {
-  const { ksm, dot, avax, optimism, polygon } = storeToRefs(
+  const { ksm, dot, avax, optimism, polygon, gno } = storeToRefs(
     useChainsAccountsStore()
   );
   const { balances } = storeToRefs(useChainBalancesStore());
@@ -34,6 +34,14 @@ export const useChainAccountBalances = () => {
   );
 
   const polygonAccounts: ComputedRef<AccountWithBalance[]> = computed(() =>
+    accountsWithBalances(
+      get(gno),
+      get(balances).gno,
+      Blockchain.GNO
+    )
+  );
+
+  const gnoAccounts: ComputedRef<AccountWithBalance[]> = computed(() =>
     accountsWithBalances(
       get(polygon),
       get(balances).polygon_pos,
@@ -115,6 +123,7 @@ export const useChainAccountBalances = () => {
     avaxAccounts,
     optimismAccounts,
     polygonAccounts,
+    gnoAccounts,
     chainTotals,
     getBreakdown
   };

@@ -11,6 +11,7 @@ export const useChainsAccountsStore = defineStore(
     const avax: Ref<GeneralAccountData[]> = ref([]);
     const optimism: Ref<GeneralAccountData[]> = ref([]);
     const polygon: Ref<GeneralAccountData[]> = ref([]);
+    const gno: Ref<GeneralAccountData[]> = ref([]);
 
     const removeTag = (tag: string) => {
       set(ksm, removeTags(ksm, tag));
@@ -18,6 +19,7 @@ export const useChainsAccountsStore = defineStore(
       set(avax, removeTags(avax, tag));
       set(optimism, removeTags(optimism, tag));
       set(polygon, removeTags(polygon, tag));
+      set(gno, removeTags(gno, tag));
     };
 
     const update = (chain: RestChains, data: GeneralAccountData[]) => {
@@ -31,6 +33,8 @@ export const useChainsAccountsStore = defineStore(
         set(optimism, data);
       } else if (chain === Blockchain.POLYGON_POS) {
         set(polygon, data);
+      } else if (chain === Blockchain.GNO) {
+        set(gno, data);
       }
     };
 
@@ -48,6 +52,7 @@ export const useChainsAccountsStore = defineStore(
       avax,
       optimism,
       polygon,
+      gno,
       optimismAddresses,
       polygonAddresses,
       update,

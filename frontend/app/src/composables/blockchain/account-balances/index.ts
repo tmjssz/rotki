@@ -19,7 +19,8 @@ export const useAccountBalances = () => {
     avaxAccounts,
     optimismAccounts,
     polygonAccounts,
-    chainTotals
+    chainTotals,
+    gnoAccounts
   } = chainStore;
 
   const accounts: ComputedRef<GeneralAccount[]> = computed(() =>
@@ -60,7 +61,8 @@ export const useAccountBalances = () => {
       [Blockchain.DOT]: dotAccounts,
       [Blockchain.AVAX]: avaxAccounts,
       [Blockchain.OPTIMISM]: optimismAccounts,
-      [Blockchain.POLYGON_POS]: polygonAccounts
+      [Blockchain.POLYGON_POS]: polygonAccounts,
+      [Blockchain.GNO]: gnoAccounts
     };
 
     const accounts = get(mapping[blockchain]);

@@ -38,7 +38,8 @@ const intersections = ref<Intersections>({
   [Blockchain.DOT]: false,
   [Blockchain.AVAX]: false,
   [Blockchain.OPTIMISM]: false,
-  [Blockchain.POLYGON_POS]: false
+  [Blockchain.POLYGON_POS]: false,
+  [Blockchain.GNO]: false
 });
 
 const updateWhenRatio = (
@@ -92,7 +93,9 @@ const observers: Observers = {
   [Blockchain.OPTIMISM]: (entries: IntersectionObserverEntry[]) =>
     updateWhenRatio(entries, Blockchain.OPTIMISM),
   [Blockchain.POLYGON_POS]: (entries: IntersectionObserverEntry[]) =>
-    updateWhenRatio(entries, Blockchain.POLYGON_POS)
+    updateWhenRatio(entries, Blockchain.POLYGON_POS),
+  [Blockchain.GNO]: (entries: IntersectionObserverEntry[]) =>
+    updateWhenRatio(entries, Blockchain.GNO)
 };
 
 const { isBlockchainLoading, isAccountOperationRunning } = useAccountLoading();
@@ -106,7 +109,8 @@ const busy: Busy = {
   [Blockchain.DOT]: isAccountOperationRunning(Blockchain.DOT),
   [Blockchain.AVAX]: isAccountOperationRunning(Blockchain.AVAX),
   [Blockchain.OPTIMISM]: isAccountOperationRunning(Blockchain.OPTIMISM),
-  [Blockchain.POLYGON_POS]: isAccountOperationRunning(Blockchain.POLYGON_POS)
+  [Blockchain.POLYGON_POS]: isAccountOperationRunning(Blockchain.POLYGON_POS),
+  [Blockchain.GNO]: isAccountOperationRunning(Blockchain.GNO)
 };
 
 const threshold = [0.5];
