@@ -121,6 +121,7 @@ class ExternalService(SerializableEnumNameMixin):
     COVALENT = 5
     OPTIMISM_ETHERSCAN = 6
     POLYGON_POS_ETHERSCAN = 7
+    GNOSIS_ETHERSCAN = 8
 
 
 class ExternalServiceApiCredentials(NamedTuple):
@@ -260,7 +261,7 @@ class ChainID(Enum):
         return CHAINID_TO_SUPPORTED_BLOCKCHAIN[self]
 
 
-SUPPORTED_CHAIN_IDS = Literal[ChainID.ETHEREUM, ChainID.OPTIMISM, ChainID.POLYGON_POS]
+SUPPORTED_CHAIN_IDS = Literal[ChainID.ETHEREUM, ChainID.OPTIMISM, ChainID.POLYGON_POS, ChainID.GNOSIS]
 
 
 class EvmTransaction(NamedTuple):
@@ -394,6 +395,7 @@ class SupportedBlockchain(SerializableEnumValueMixin):
     POLKADOT = 'DOT'
     OPTIMISM = 'OPTIMISM'
     POLYGON_POS = 'POLYGON_POS'
+    GNOSIS = 'GNO'
 
     def __str__(self) -> str:
         return SUPPORTED_BLOCKCHAIN_NAMES_MAPPING.get(self, super().__str__())
@@ -475,6 +477,7 @@ EVM_CHAINS_WITH_TRANSACTIONS_TYPE = Literal[
     SupportedBlockchain.ETHEREUM,
     SupportedBlockchain.OPTIMISM,
     SupportedBlockchain.POLYGON_POS,
+    SupportedBlockchain.GNOSIS
 ]
 
 EVM_CHAINS_WITH_TRANSACTIONS: tuple[EVM_CHAINS_WITH_TRANSACTIONS_TYPE, ...] = typing.get_args(EVM_CHAINS_WITH_TRANSACTIONS_TYPE)  # noqa: E501
@@ -492,6 +495,7 @@ SUPPORTED_EVM_CHAINS = Literal[
     SupportedBlockchain.OPTIMISM,
     SupportedBlockchain.AVALANCHE,
     SupportedBlockchain.POLYGON_POS,
+    SupportedBlockchain.GNOSIS
 ]
 
 SUPPORTED_NON_BITCOIN_CHAINS = Literal[
@@ -502,6 +506,7 @@ SUPPORTED_NON_BITCOIN_CHAINS = Literal[
     SupportedBlockchain.POLKADOT,
     SupportedBlockchain.OPTIMISM,
     SupportedBlockchain.POLYGON_POS,
+    SupportedBlockchain.GNOSIS,
 ]
 
 SUPPORTED_BITCOIN_CHAINS = Literal[
@@ -519,6 +524,7 @@ SUPPORTED_BLOCKCHAIN_TO_CHAINID = {
     SupportedBlockchain.OPTIMISM: ChainID.OPTIMISM,
     SupportedBlockchain.AVALANCHE: ChainID.AVALANCHE,
     SupportedBlockchain.POLYGON_POS: ChainID.POLYGON_POS,
+    SupportedBlockchain.GNOSIS: ChainID.GNOSIS,
 }
 CHAINID_TO_SUPPORTED_BLOCKCHAIN = {
     value: key
@@ -530,6 +536,7 @@ CHAINS_WITH_CHAIN_MANAGER = Literal[
     SupportedBlockchain.ETHEREUM,
     SupportedBlockchain.OPTIMISM,
     SupportedBlockchain.POLYGON_POS,
+    SupportedBlockchain.GNOSIS,
     SupportedBlockchain.AVALANCHE,
     SupportedBlockchain.POLKADOT,
     SupportedBlockchain.KUSAMA,
